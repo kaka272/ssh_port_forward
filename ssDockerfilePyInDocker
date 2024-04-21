@@ -1,0 +1,12 @@
+FROM alpine:3.6
+
+RUN apk --no-cache add python \
+    git
+
+RUN git clone https://github.com/YvesChan/shadowsocks.git ~/shadowsocks
+
+WORKDIR ~/shadowsocks
+
+EXPOSE 1314
+
+CMD python2.7 ~/shadowsocks/server.py -p 1314 -k hello
