@@ -6,4 +6,4 @@ cd $current_path
 
 bash start_ss_by_py_in_docker.sh
 
-ssh -R 9003:127.0.0.1:9003  -N root@116.205.238.201
+ssh -R 9003:127.0.0.1:9004  -N root@116.205.238.201
