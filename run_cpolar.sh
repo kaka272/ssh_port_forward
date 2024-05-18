@@ -1,3 +1,4 @@
+#!/bin/bash
 
 docker pull probezy/cpolar
 docker run -d -p 9004:1314 kaka272/unisoc:ss0.1
