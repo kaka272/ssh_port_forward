@@ -11,3 +11,8 @@ ssh -R 9003:127.0.0.1:9004  -N ubuntu@106.54.54.7
 #config 106.54.54.7 /etc/ssh/sshd_config
 #AllowTcpForwarding yes
 #GatewayPorts yes
+
+
+# curl -x socks5://localhost:8089 http://www.google.com
+# ssh -D 0.0.0.0:8089 -N 107.175.132.4 
+# 远端转发相当于 socks5
