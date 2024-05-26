@@ -33,7 +33,11 @@ create_def_port_tunnel() {
     local remote_port="$5"
     local screen_log="/tmp/${screen_name}.log"
 
-    read -s -p "Please enter your remote host password: " machine_password
+if [[ "${machine_password}" != "" ]]; then
+    echo "machine_password 变量存在"
+else
+    read -s -p "Please enter your password: " machine_password
+fi
 
     rm -fr $screen_log
 
