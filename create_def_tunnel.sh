@@ -24,6 +24,15 @@ wait_for_string_in_log() {
     done
 }
 
+set_m_pass() {
+    set +ex
+    if [[ "${machine_password}" != "" ]]; then
+        echo "machine_password 变量存在"
+    else
+        read -s -p "Please enter your password: " machine_password
+    fi
+    set -ex
+}
 
 create_def_port_tunnel() {
     local screen_name="$1"
@@ -33,11 +42,7 @@ create_def_port_tunnel() {
     local remote_port="$5"
     local screen_log="/tmp/${screen_name}.log"
 
-if [[ "${machine_password}" != "" ]]; then
-    echo "machine_password 变量存在"
-else
-    read -s -p "Please enter your password: " machine_password
-fi
+    set_m_pass
 
     rm -fr $screen_log
 
@@ -54,12 +59,10 @@ fi
     set -ex
 
     wait_for_string_in_log "$screen_log" "password:" 30
+
     set +ex
     screen -S $screen_name -X stuff "${machine_password}$(printf \\r)"
     set -ex
 }
 
 echo 'useage: create_def_port_tunnel screen_name local_port remote_user remote_host remote_port'
-
-
-
