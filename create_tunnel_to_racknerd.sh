@@ -1,6 +1,9 @@
 #!/bin/bash
 
 
+set -ex
+
+
 wait_for_string_in_log() {
     local log_file="$1"
     local target_string="$2"
@@ -37,10 +40,10 @@ else
 fi
 
 
-read -p "Please enter your password: " password
+read -s -p "Please enter your password: " password
 
 
-screen -s bash -L /tmp/racknerd_9003 -dmS racknerd_9003 ssh -L 0.0.0.0:9013:107.173.171.62:9003 root107.173.171.62
+screen -s bash -dmS racknerd_9003 -L /tmp/racknerd_9003 ssh -L 0.0.0.0:9013:107.173.171.62:9003 root107.173.171.62
 
 wait_for_string_in_log "/tmp/racknerd_9003" "yes" 30
 
