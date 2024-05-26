@@ -41,7 +41,7 @@ fi
 read -s -p "Please enter your password: " password
 
 
-screen -s bash -dmS colo_9003 -Logfile /tmp/colo_9003 ssh -L 0.0.0.0:9013:107.175.132.4:9003 root@107.175.132.4
+screen -s bash -dmS colo_9003 -L -Logfile /tmp/colo_9003 ssh -L 0.0.0.0:9013:107.175.132.4:9003 root@107.175.132.4
 
 wait_for_string_in_log "/tmp/colo_9003" "yes/no" 30
 
