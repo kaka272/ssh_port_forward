@@ -52,10 +52,12 @@ create_def_port_tunnel() {
 
     screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.173.171.62:${remote_port} root@107.173.171.62 -N
 
+    set +ex
     wait_for_string_in_log "$screen_log" "yes/no" 30
     if [[ $? -eq 0 ]]; then
         screen -S $screen_name -X stuff "yes$(printf \\r)"
     fi
+    set -ex
 
     wait_for_string_in_log "$screen_log" "password:" 30
     set +ex
