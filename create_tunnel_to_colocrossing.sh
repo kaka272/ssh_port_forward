@@ -49,16 +49,15 @@ create_def_port_tunnel() {
 
     rm -fr $screen_log
 
-    screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.175.132.4:${remote_port} root@107.175.132.4
+    screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.175.132.4:${remote_port} root@107.175.132.4 -N
 
     wait_for_string_in_log "$screen_log" "yes/no" 30
     screen -S $screen_name -X stuff "yes$(printf \\r)"
 
     wait_for_string_in_log "$screen_log" "password:" 30
-    screen -S $screen_name -X stuff "${password}$(printf \\r)"
-
-
+    set +ex
+    screen -S $screen_name -X stuff "${machine_password}$(printf \\r)"
+    set -ex
+}
 
 create_def_port_tunnel "colo_9003" 9013 9003
-
-
