@@ -16,5 +16,5 @@ else
 fi
 
 
-bash create_tunnel_to_racknerd.sh
-bash create_tunnel_to_colocrossing.sh
+source create_tunnel_to_racknerd.sh
+Source create_tunnel_to_colocrossing.sh

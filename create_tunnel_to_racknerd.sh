@@ -5,7 +5,7 @@ set -ex
 source create_def_tunnel.sh
 
 
-if [[ -n "${!machine_password}" ]]; then
+if [[ "${machine_password}" != "" ]]; then
     echo "machine_password 变量存在"
 else
     read -s -p "Please enter your password: " machine_password
