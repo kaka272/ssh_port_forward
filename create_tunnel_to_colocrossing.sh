@@ -60,7 +60,9 @@ create_def_port_tunnel() {
     set -ex
 }
 
-create_def_port_tunnel "colo_9002" 9013 9002
+
+create_def_port_tunnel "colo_9002" 9012 9002
 create_def_port_tunnel "colo_9003" 9013 9003
 create_def_port_tunnel "colo_9004" 9014 9004
+
 
