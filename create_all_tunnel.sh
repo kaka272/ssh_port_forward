@@ -3,6 +3,13 @@
 set -x
 
 
+if [[ "${machine_password}" != "" ]]; then
+    echo "machine_password 变量存在"
+else
+    read -s -p "Please enter your password: " machine_password
+fi
+
+
 if command -v apt &> /dev/null; then
     echo "Using apt to install screen"
     sudo apt update -y
