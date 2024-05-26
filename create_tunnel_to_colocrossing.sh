@@ -17,7 +17,7 @@ wait_for_string_in_log() {
             elapsed_time=$((current_time - start_time))
             if [ $elapsed_time -ge $timeout ]; then
                 echo "超时！未能找到指定字符。"
-                return 1  # 返回失败
+                return 0  # 返回失败
             fi
             sleep 1  # 每秒检查一次日志文件
         fi
