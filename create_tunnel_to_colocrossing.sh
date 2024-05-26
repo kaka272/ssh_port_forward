@@ -46,7 +46,7 @@ wait_for_string_in_log "/tmp/colo_9003" "yes" 30
 
 screen -S colo_9003 -X stuff "yes$(printf \\r)"
 
-wait_for_string_in_log "/tmp/colo_9003" "yes" 30
+wait_for_string_in_log "/tmp/colo_9003" "password:" 30
 
 screen -S colo_9003 -X stuff "${password}$(printf \\r)"
 
