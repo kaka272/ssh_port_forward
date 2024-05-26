@@ -55,7 +55,7 @@ create_def_port_tunnel() {
     set -ex
 }
 
-echo 'useage: create_def_port_tunnel "screen_name" local_port remote_user remote_host remote_port'
+echo 'useage: create_def_port_tunnel screen_name local_port remote_user remote_host remote_port'
 
 
 
