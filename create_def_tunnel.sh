@@ -66,3 +66,4 @@ create_def_port_tunnel() {
 }
 
 echo 'useage: create_def_port_tunnel screen_name local_port remote_user remote_host remote_port'
+echo 'example: create_def_port_tunnel test 9021 root 107.173.171.62 9002'
