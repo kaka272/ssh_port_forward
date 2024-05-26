@@ -55,7 +55,7 @@ create_def_port_tunnel() {
     screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.175.132.4:${remote_port} root@107.175.132.4 -N
 
     local result=$(wait_for_string_in_log "$screen_log" "yes/no" 30)
-    if [ "$result" == "0" ]; then
+    if [[ $result -eq 0 ]]; then
         screen -S $screen_name -X stuff "yes$(printf \\r)"
     fi
 
