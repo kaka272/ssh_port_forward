@@ -11,7 +11,7 @@ wait_for_string_in_log() {
     while true; do
         if grep -q "$target_string" "$log_file"; then
             echo "发现指定字符！"
-            return 0  # 返回成功
+            return 1  # 返回成功
         else
             current_time=$(date +%s)
             elapsed_time=$((current_time - start_time))
@@ -53,8 +53,10 @@ create_def_port_tunnel() {
 
     screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.175.132.4:${remote_port} root@107.175.132.4 -N
 
-    wait_for_string_in_log "$screen_log" "yes/no" 30
-    screen -S $screen_name -X stuff "yes$(printf \\r)"
+    local result=$(wait_for_string_in_log "$screen_log" "yes/no" 30)
+    if [ "$result" -eq 1 ]; then
+        screen -S $screen_name -X stuff "yes$(printf \\r)"
+    fi
 
     wait_for_string_in_log "$screen_log" "password:" 30
     set +ex
