@@ -43,14 +43,15 @@ fi
 read -s -p "Please enter your password: " password
 
 
-screen -s bash -dmS racknerd_9003 -L /tmp/racknerd_9003 ssh -L 0.0.0.0:9013:107.173.171.62:9003 root107.173.171.62
+screen -s bash -dmS racknerd_9003 -Logfile /tmp/racknerd_9003 ssh -L 0.0.0.0:9013:107.173.171.62:9003 root@107.173.171.62
 
-wait_for_string_in_log "/tmp/racknerd_9003" "yes" 30
+wait_for_string_in_log "/tmp/racknerd_9003" "yes/no" 30
 
 screen -S racknerd_9003 -X stuff "yes$(printf \\r)"
 
 wait_for_string_in_log "/tmp/racknerd_9003" "password:" 30
 
 screen -S racknerd_9003 -X stuff "${password}$(printf \\r)"
+
 
 
