@@ -68,8 +68,8 @@ create_def_port_tunnel() {
 }
 
 
-create_def_port_tunnel "colo_9002" 9012 9002
-create_def_port_tunnel "colo_9003" 9013 9003
-create_def_port_tunnel "colo_9004" 9014 9004
+create_def_port_tunnel "colo_9015" 9015 9002
+create_def_port_tunnel "colo_9016" 9016 9003
+create_def_port_tunnel "colo_9017" 9017 9004
 
 
