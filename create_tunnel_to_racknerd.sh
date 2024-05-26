@@ -48,7 +48,7 @@ create_def_port_tunnel() {
     rm -fr $screen_log
 
     screen -ls | grep Detached | grep ${screen_name} | cut -d. -f1 | awk '{print $1}' | xargs kill || echo done
-    screen -ls
+    screen -ls || echo done
 
     screen -s bash -dmS $screen_name -L -Logfile $screen_log ssh -L 0.0.0.0:${local_port}:107.173.171.62:${remote_port} root@107.173.171.62 -N
 
